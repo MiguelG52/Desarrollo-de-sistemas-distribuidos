@@ -25,6 +25,7 @@ function App() {
   return (
     <>
       <div className='main'>
+        <h1>Práctica 8:pwa</h1>
         <div className='header'>
           <ScoreBoard user={currentUser}/>
           <button onClick={handleRestartMatch}>Reiniciar</button>

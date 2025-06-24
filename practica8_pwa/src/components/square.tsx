@@ -1,17 +1,21 @@
 
-interface squareProps{
-  value:string,
-  handleClickSquare: () => void
+interface squareProps {
+  value: string;
+  handleClickSquare: () => void;
+  disabled?: boolean;
+  highlight?: boolean;
 }
 
-const Square = ({value, handleClickSquare}:squareProps) => {
+const Square = ({ value, handleClickSquare, disabled = false, highlight = false }: squareProps) => {
   return (
-    <>
-        <button className="cell" onClick={handleClickSquare} value={value}>
-          {value}
-        </button>
-    </>
-  )
-}
+    <button
+      className={`cell ${highlight ? "cell-highlight" : ""}`}
+      onClick={handleClickSquare}
+      disabled={disabled || !!value}
+    >
+      {value}
+    </button>
+  );
+};
 
-export default Square
+export default Square;
