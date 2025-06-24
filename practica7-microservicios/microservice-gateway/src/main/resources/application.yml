@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    import: optional:configserver:http://localhost:8888
+  application:
+    name: mscv-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+          routes:
+            - id: student-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/student/**
+            - id: groups-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/groups/**
